@@ -1,2 +1,4 @@
 resources/docker/*
 resources/*
+target
+target/*
