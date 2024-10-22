@@ -38,6 +38,23 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+                <executions><!--You don't need executions tag with jar goal. Default goal is jar anyway. Just like default phase is package.-->
+                    <execution>
+                        <id>override-jar-goal</id>
+                        <phase>package</phase>
+                        <goals>
+                          <goal>jar</goal>
+                        </goals>
+                      </execution>
+                    </executions>
+                <configuration>
+                    <classifier>non-sense</classifier><!--You need classifier since you are overriding jar. Otherwise classifier is option. It added as a suffix.-->
+                    <inclusion>${PROJ_HOME}/targets/classes/*</inclusion>
+                </configuration>
+			</plugin>
         </plugins>
     </build>
 
