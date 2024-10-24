@@ -43,3 +43,26 @@ For execultion
 ```
 mvn compile
 ```
+
+### Jar package for module
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>3.3.0</version>
+    <configuration>
+        <archive>
+            <manifest>
+                <packageName>com.baeldung.java</packageName>
+            </manifest>
+            <manifestEntries>
+                <Created-By>baeldung</Created-By>
+            </manifestEntries>
+        </archive>
+    </configuration>
+</plugin>
+```
+
+mvn package
+
+[Link](https://www.baeldung.com/java-jar-manifest)

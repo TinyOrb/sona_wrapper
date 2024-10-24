@@ -2,6 +2,7 @@ FROM openjdk:24-ea-11-oraclelinux9
 RUN mkdir -p /opt/app
 COPY pom.xml /opt/app/pom.xml
 ENV PROJ_HOME=/opt/app
+ENV gpg_keyname=0xD485CD61
 
 # Copying Maven
 ENV MAVEN_HOME=/usr/share/maven

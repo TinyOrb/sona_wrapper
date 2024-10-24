@@ -53,8 +53,41 @@
                 <configuration>
                     <classifier>non-sense</classifier><!--You need classifier since you are overriding jar. Otherwise classifier is option. It added as a suffix.-->
                     <inclusion>${PROJ_HOME}/targets/classes/*</inclusion>
+                    <archive>
+                        <manifest>
+                        <addClasspath>true</addClasspath>
+                        <classpathPrefix>dependency-jars/</classpathPrefix>
+                        </manifest>
+                      </archive>
                 </configuration>
 			</plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.5.1</version>
+				<executions>
+				  <execution>
+					<id>copy-dependencies</id>
+					<phase>package</phase>
+					<goals>
+						<goal>copy-dependencies</goal>
+					</goals>
+					<configuration>
+					  <includeScope>runtime</includeScope>
+					  <outputDirectory>${PROJ_HOME}/target/dependency-jars/</outputDirectory>
+					</configuration>
+				  </execution>
+				</executions>
+			</plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.6.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                  <publishingServerId>central</publishingServerId>
+                </configuration>
+              </plugin>
         </plugins>
     </build>
 
