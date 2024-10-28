@@ -21,14 +21,6 @@ docker rm ${service_name} || true
 docker image rm "${image_name}:${image_version}" || true
 docker build -t "${image_name}:${image_version}" .
 
-
 docker run --name "${service_name}" --mount type=bind,source="${p_root}/src",target="/opt/app/src" \
 --entrypoint "/bin/bash" ${image_name}:${image_version} \
--c "cd /opt/app && mvn clean compile && mvn package && cp -r /root/.m2/repository/org/tinyorb/sona/sona_wrapper /opt/app/target/"
-
-
-# -c "export PATH=$PATH:${JAVA_HOME}/bin && cd /opt/app && javac -cp /root/.m2/repository/* src/main/org/tinyorb/sona/sona_wrapper/*.java && jar cvf /opt/app/target/mylib.jar org/**/*.class"
-# -c "cd /opt/app && mvn clean install && cp -r /root/.m2/repository/org/tinyorb/sona/sona_wrapper /opt/app/target/"
-
-docker cp "${service_name}:/opt/app/target" .
-
+-c "cd /opt/app && mvn test"

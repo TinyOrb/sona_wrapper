@@ -1,0 +1,19 @@
+## Cucumber test example
+
+https://github.com/testdouble/java-cucumber-example/tree/main
+
+## Cucumber official documentation of junit integration for maven
+
+https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine
+
+## Cucumber basic official documentation
+
+https://cucumber.io/docs/installation/java/
+
+## Random junit parallel execution sample
+
+https://www.baeldung.com/junit-5-parallel-tests
+
+## Cucumber expression
+
+https://github.com/cucumber/cucumber-expressions#readme

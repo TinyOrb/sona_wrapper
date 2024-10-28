@@ -39,55 +39,71 @@
                 </executions>
             </plugin>
             <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-                <executions><!--You don't need executions tag with jar goal. Default goal is jar anyway. Just like default phase is package.-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions><!--You
+                    don't need executions tag with jar goal. Default goal is jar anyway. Just like
+                    default phase is package.-->
                     <execution>
                         <id>override-jar-goal</id>
                         <phase>package</phase>
                         <goals>
-                          <goal>jar</goal>
+                            <goal>jar</goal>
                         </goals>
-                      </execution>
-                    </executions>
+                    </execution>
+                </executions>
                 <configuration>
-                    <classifier>non-sense</classifier><!--You need classifier since you are overriding jar. Otherwise classifier is option. It added as a suffix.-->
+                    <classifier>non-sense</classifier><!--You
+                    need classifier since you are overriding jar. Otherwise classifier is option. It
+                    added as a suffix.-->
                     <inclusion>${PROJ_HOME}/targets/classes/*</inclusion>
                     <archive>
                         <manifest>
-                        <addClasspath>true</addClasspath>
-                        <classpathPrefix>dependency-jars/</classpathPrefix>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>dependency-jars/</classpathPrefix>
                         </manifest>
-                      </archive>
+                    </archive>
                 </configuration>
-			</plugin>
+            </plugin>
             <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.5.1</version>
-				<executions>
-				  <execution>
-					<id>copy-dependencies</id>
-					<phase>package</phase>
-					<goals>
-						<goal>copy-dependencies</goal>
-					</goals>
-					<configuration>
-					  <includeScope>runtime</includeScope>
-					  <outputDirectory>${PROJ_HOME}/target/dependency-jars/</outputDirectory>
-					</configuration>
-				  </execution>
-				</executions>
-			</plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.5.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>runtime</includeScope>
+                            <outputDirectory>${PROJ_HOME}/target/dependency-jars/</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
                 <version>0.6.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                  <publishingServerId>central</publishingServerId>
+                    <publishingServerId>central</publishingServerId>
                 </configuration>
-              </plugin>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <properties>
+                        <configurationParameters>
+                            cucumber.junit-platform.naming-strategy=long
+                        </configurationParameters>
+                    </properties>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -96,6 +112,32 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.1.0-alpha1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java8</artifactId>
+            <version>7.20.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.20.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>7.20.1</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-engine -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-engine</artifactId>
+            <version>1.11.0</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
