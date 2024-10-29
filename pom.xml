@@ -41,6 +41,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
                 <executions><!--You
                     don't need executions tag with jar goal. Default goal is jar anyway. Just like
                     default phase is package.-->

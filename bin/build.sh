@@ -23,6 +23,7 @@ docker build -t "${image_name}:${image_version}" .
 
 
 docker run --name "${service_name}" --mount type=bind,source="${p_root}/src",target="/opt/app/src" \
+--mount type=bind,source="${p_root}/.m2",target="/root/.m2" \
 --entrypoint "/bin/bash" ${image_name}:${image_version} \
 -c "cd /opt/app && mvn clean compile && mvn package && cp -r /root/.m2/repository/org/tinyorb/sona/sona_wrapper /opt/app/target/"
 
