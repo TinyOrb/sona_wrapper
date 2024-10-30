@@ -1,6 +1,7 @@
 package clogger;
 
 import io.cucumber.java8.En;
+import static org.junit.Assert.assertEquals;
 
 public class StepCustomLogger implements En{
 
@@ -23,6 +24,20 @@ public class StepCustomLogger implements En{
 
         When("it is executed", () -> {
             System.out.format("When executed\n");
+        });
+
+        Given("Demo Step", ()-> {
+            System.out.format("Demo Step Executed\n");
+        });
+
+        Then("Pass step", ()-> {
+            assertEquals("Joe", "Joe");
+            System.out.format("Pass Step Execution\n");
+        });
+
+        Then("Fail step", ()-> {
+            assertEquals("Joe", "Foe");
+            System.out.format("Fail Step Execution\n");
         });
 
     }
