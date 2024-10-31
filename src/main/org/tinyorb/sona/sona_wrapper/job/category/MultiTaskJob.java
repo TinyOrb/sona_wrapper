@@ -4,8 +4,8 @@ import org.tinyorb.sona.sona_wrapper.job.JobIntf;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiTaskJob <Job> implements JobIntf <Job> {
-    List<Job> job_list = new ArrayList<Job>();
+public class MultiTaskJob <Task> implements JobIntf <Task> {
+    List<Task> job_list = new ArrayList<Task>();
     
     @Override
     public void execute() {
@@ -13,8 +13,8 @@ public class MultiTaskJob <Job> implements JobIntf <Job> {
     }
 
     @Override
-    public void add(Job job) {
-        job_list.add(job);
+    public void add(Task task) {
+        job_list.add(task);
     }
 
     public void abort() {

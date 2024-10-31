@@ -2,8 +2,8 @@ package org.tinyorb.sona.sona_wrapper.job.category;
 
 import org.tinyorb.sona.sona_wrapper.job.JobIntf;
 
-public class ResourceCriticalJob<Job> implements JobIntf<Job> {
-    private Job job;
+public class ResourceCriticalJob<Task> implements JobIntf<Task> {
+    private Task task;
 
     @Override
     public void execute() {
@@ -11,8 +11,8 @@ public class ResourceCriticalJob<Job> implements JobIntf<Job> {
     }
 
     @Override
-    public void add(Job job) {
-        this.job = job;
+    public void add(Task task) {
+        this.task = task;
     }
 
     public void abort() {
