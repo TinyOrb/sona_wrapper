@@ -1,7 +1,8 @@
-package clogger;
+package wrapper;
 
 import io.cucumber.java8.En;
 import static org.junit.Assert.assertEquals;
+
 
 public class StepCustomLogger implements En{
 

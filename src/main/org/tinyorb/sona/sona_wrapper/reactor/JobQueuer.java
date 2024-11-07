@@ -11,21 +11,23 @@ import java.util.LinkedList;
 public class JobQueuer {
     // JobIntf<Http> simpleHttpJob = new SimpleJob<Http>();
     
-    static Queue<SimpleJob> simpleJobQueue = new LinkedList<SimpleJob>();
+    static Queue<JobIntf> JobQueue = new LinkedList<>();
 
     synchronized static void enqueSimpleHttpJob(SimpleJob<Http> job) {
-        JobQueuer.simpleJobQueue.add(job);
+        JobIntf<Http> ajob = job;
+        JobQueue.add(ajob);
     }
 
     synchronized static void enqueSimpleLogJob(SimpleJob<Log> job) {
-        JobQueuer.simpleJobQueue.add(job);
+        JobIntf<Log> ajob = job;
+        JobQueue.add(job);
     }
 
     synchronized public JobIntf peekJob() {
-        return simpleJobQueue.peek();
+        return JobQueue.peek();
     }
 
     public JobIntf retrieveJob() {
-        return simpleJobQueue.poll();
+        return JobQueue.poll();
     }
 }
